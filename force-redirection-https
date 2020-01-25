@@ -1,0 +1,16 @@
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+  
+## Si vous avez plusieurs domaines :
+ 
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^VotreDomaine\.com [NC]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI}
+ 
+
+## Si vous avez un proxy :
+ 
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
