@@ -22,3 +22,10 @@ if(strstr($_SERVER['HTTP_HOST'], 'www') == FALSE) {
 }
 ?>
 
+####################################################################
+# Note concernant la variable %{HTTP_HOST} :
+# si celle-ci n’est pas reconnue sur votre serveur d’hébergement, 
+# tentez d’utiliser %{HTTP:Host} à la place.
+####################################################################
+
+
