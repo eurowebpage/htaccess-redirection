@@ -10,6 +10,15 @@ RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www.votre-site.eu$
 RewriteRule ^(.*) http://votre-site.eu/$1 [QSA,L,R=301]
 
+########################################
+#               OU                     #
+########################################
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^%{HTTP_HOST}. [NC]
+RewriteRule ^(.*)$   https://www.%{HTTP_HOST}/$1  [L,R=301]
+
+
 ###############
 # version php
 ###############
