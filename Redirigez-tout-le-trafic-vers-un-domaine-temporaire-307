@@ -1,0 +1,20 @@
+#################################################################
+#           https://webii.eu/service/htaccess-codes
+################################################################################
+# Redirigez tout le trafic vers un domaine temporaire avec la redirection 307
+################################################################################
+
+#################################################################
+# ajouter ce code au début de votre fichier .htaccess
+# redirection 307 (trafic déplacé de façon temporaire.)
+#################################################################
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^old.domain$
+RewriteRule (.*)$ http://new.domain/$1 [R=307,L]
+
+###### ou ######
+
+RewriteEngine on 
+RewriteCond   %{HTTP_HOST} old\.domain [NC]
+RewriteRule   ^/(.*)$ http://new.domain/$1 [R=307,L]
