@@ -1,0 +1,21 @@
+#################################################################
+#           https://webii.eu/service/htaccess-codes
+##################################################################
+#  redirection page sécurisée SSL/TLS ou page non sécurisée
+##################################################################
+
+RewriteEngine on
+
+#redirection permanente https => http
+RewriteCond %{HTTPS} ^on$ [NC]
+RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1  [R=301,L]
+
+#redirection permanente http => https
+RewriteCond %{HTTPS} ^off$ [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1  [R=301,L]
+
+###########################################################################################################################
+# Il est parfois utile de pouvoir rediriger l'accès à des pages sécurisées vers la version non sécurisée.
+# Il suffit d'un lien externe erroné pour qu'un robot de moteur de recherche indexe des pages qui ne devraient pas l'être. 
+# Il est possible d'ajouter une condition supplémentaire pour ne rediriger que certaines pages.
+###########################################################################################################################
