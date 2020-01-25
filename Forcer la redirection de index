@@ -1,0 +1,15 @@
+# version .htaccess
+RewriteEngine On
+RewriteCond %{THE_REQUEST} ^(GET|POST|HEAD)\ (/.*)?/index.(htm|html|php|asp)
+RewriteRule ^(.*)index.(htm|html|php|asp)$ /$1 [R=301,L]
+
+
+<?php
+// version php
+if (preg_match_all('^(.+)/index.(htm|html|php|asp)(?.*)?$',$_SERVER['REQUEST_URI'], $match)) {
+  $url = $match[0].(empty($match[2])?'':$match[2]);
+  header("Status: 301 Moved Permanently");
+  header("Location: http://".$_SERVER['HTTP_HOST'].$url);
+  exit;
+}
+?>
