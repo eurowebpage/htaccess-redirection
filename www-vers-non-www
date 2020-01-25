@@ -1,0 +1,12 @@
+#################################################################
+#           https://webii.eu/service/htaccess-codes
+##################################################################
+##################################
+# redirection wwww vers non wwww
+##################################
+
+Options +FollowSymlinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www.votre-site.eu$
+RewriteRule ^(.*) http://votre-site.eu/$1 [QSA,L,R=301]
+
