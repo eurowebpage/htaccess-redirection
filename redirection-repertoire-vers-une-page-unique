@@ -1,0 +1,20 @@
+# Solution 1 directive RedirectMatch (mod_alias)
+
+RedirectMatch seeother ^/unrepertoire/.*$ http://www.example.com/une_url
+-----------------------------------------------------------------------------------------------
+# Solution 2 règle de réécriture du mod_rewrite (choisir une des 3 solutions ci-dessous
+
+# Avec le statut  "permanent" (301) pour faire une redirection permanent 
+
+RewriteEngine on
+RewriteRule ^unrepertoire/.*$ http://www.example.com/une_url [R=301,L]
+
+# Avec le statut  "temp" (302) pour faire une redirection temporaire
+
+RewriteEngine on
+RewriteRule ^unrepertoire/.*$ http://www.example.com/une_url [R=302,L]
+
+# Avec le statut "seeother" (303) qui indique que la ressource a été déplacée
+
+RewriteEngine on
+RewriteRule ^unrepertoire/.*$ http://www.example.com/une_url [R=303,L]
