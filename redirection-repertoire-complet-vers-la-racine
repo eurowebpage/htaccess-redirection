@@ -1,0 +1,17 @@
+#################################################################
+#           https://webii.eu/service/htaccess-codes
+##################################################################
+# Redirection d'un répertoire et ses sous-répertoires vers la racine avec la règle de réécriture  flag R=301
+############################################################################################################
+
+################################################
+# version de la redirection à placer à la racine
+################################################
+RewriteEngine on
+RewriteRule ^lerepertoire/.*$ /? [R=301]
+#######################################################
+# version de la redirection à placer dans le répertoire
+#######################################################
+RewriteEngine on
+RewriteRule ^.*$ /? [R=301]
+#######################################################
