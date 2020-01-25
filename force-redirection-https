@@ -14,3 +14,11 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI}
  
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+####################################################################
+# Note concernant la variable %{HTTP_HOST} :
+# si celle-ci n’est pas reconnue sur votre serveur d’hébergement, 
+# tentez d’utiliser %{HTTP:Host} à la place.
+####################################################################
+
+
