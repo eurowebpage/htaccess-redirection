@@ -1,0 +1,41 @@
+###########################################################################################
+#           https://webii.eu/service/htaccess-codes
+###########################################################################################
+#  Redirection d’un domaine vers un nouveau domaine tout en gardant son référencement
+###########################################################################################
+
+##################################################################################################################
+# Si vous souhaitez changer de nom de domaine, 
+# il est préférable de rediriger toutes les anciennes pages de votre site internet vers le nouveau nom de domaine. 
+#
+# Le code de redirection permanente (301) dest pour indiquer aux moteurs de recherche 
+# que l’URL des anciennes pages est changée de façon définitive.
+##################################################################################################################
+
+###########################################
+# Cas 1 : changement de nom de domaine
+###########################################
+
+#Redirection de l'ancien nom de domaine
+RewriteCond %{HTTP_HOST} ^(?:www\.)?ancien-domaine\.com [NC]
+RewriteRule ^/?(.*) http://www.nouveau-domaine.com/$1 [L,R=301]
+
+################################################################
+# Cas 2 : changement de nom de domaine et / ou de sous-domaine
+################################################################
+
+#Redirection de l'ancien sous-domaine
+RewriteCond %{HTTP_HOST}   ^sous-domaine.ancien-domaine.com [NC]
+RewriteRule ^/?(.*)         http://sous-domaine.nouveau-domaine.com/$1 [L,R=301]
+
+
+####################################################################
+# Note concernant la variable %{HTTP_HOST} :
+# si celle-ci n’est pas reconnue sur votre serveur d’hébergement, 
+# tentez d’utiliser %{HTTP:Host} à la place.
+####################################################################
+
+
+
+
+
