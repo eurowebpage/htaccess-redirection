@@ -1,0 +1,8 @@
+#################################################################
+#           https://webii.eu/service/htaccess-codes
+##################################################################
+#  Renvoyer les visiteurs arrivant à la racine  vers UN répertoire.
+##################################################################
+
+RewriteEngine On
+RewriteRule ^(index\.php)?$ /tonrepertoire/ [L,R=301]
