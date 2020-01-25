@@ -1,3 +1,6 @@
+Pour éviter le duplicate content, Forcer la redirection de index.html vers /
+----------------------------------------------------------------------------
+
 # version .htaccess
 RewriteEngine On
 RewriteCond %{THE_REQUEST} ^(GET|POST|HEAD)\ (/.*)?/index.(htm|html|php|asp)
