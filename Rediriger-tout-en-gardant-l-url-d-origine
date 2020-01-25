@@ -1,0 +1,28 @@
+###########################################################################################
+#           https://webii.eu/service/htaccess-codes
+###########################################################################################
+# RRediriger un nom de domaine tout en gardant l'url d'origine dans la barre du navigateur
+###########################################################################################
+
+################################################################################
+# Avec e module mod_proxy d'apache et l'option [P] (mode proxy)
+################################################################################
+
+#url rewriting :
+RewriteEngine On
+RewriteRule ^(.*)$ http://www.domaine2.com/$1 [P]
+
+################################################################################
+# Avec la directive ProxyPass du module mod_proxy d'Apache
+################################################################################
+
+#virtual host
+<VirtualHost ip:port>
+ServerName domaine1.com
+ProxyPass / http://www.domaine2.com/
+</VirtualHost>
+
+
+################################################################################
+# A noter: Dans les deux cas le mod_proxy doit être activé.
+################################################################################
