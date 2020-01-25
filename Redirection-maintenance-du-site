@@ -1,0 +1,41 @@
+#################################################################
+#           https://webii.eu/service/htaccess-codes
+################################################################################
+#  Les visiteurs sont rediriger sur une page qui signale la maintenance du site
+################################################################################
+
+#################################################################
+# ajouter ce code au début de votre fichier .htaccess
+# redirection 307 (document déplacé de façon temporaire.)
+#################################################################
+
+RewriteCond %{REMOTE_ADDR} !^111\.222\.333\.444$
+RewriteRule . https://votre-site.eu/page-de-maintenance.php [R=307,L]
+
+
+
+#################################################################
+# ajouter ce code au début de votre fichier .htaccess
+# code 503 pour de la maintenance 
+# (Service Temporarily Unavailable) avec « Retry-After »
+# pour que les moteurs de recherche sachent quand revenir !!!
+#################################################################
+
+ErrorDocument 503 /path/to/503.html
+RewriteEngine On
+RewriteCond %{REMOTE_ADDR} !^111.111.111.111$
+RewriteCond %{REQUEST_URI} !.(css|gif|ico|jpg|js|png|swf|txt)$
+RewriteRule .* - [R=503,L]
+
+###### ou ######
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !.(css|gif|ico|jpg|js|png|swf|txt)$
+RewriteCond %{REMOTE_ADDR} !^111.111.111.111$
+RewriteRule .* 503.php [L]
+
+## Et puis ajoutez les lignes ci-dessous au début de la page PHP (exemple 503.php):
+
+header('HTTP/1.1 503 Service Temporarily Unavailable');
+header('Retry-After: 600');
+
