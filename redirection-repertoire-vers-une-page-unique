@@ -1,4 +1,6 @@
-################################################################
+#################################################################
+Voir plus https://webii.eu/service/htaccess-codes
+##################################################################
 # Solution 1 directive RedirectMatch (mod_alias)"seeother" (303)
 ##################################################################
 RedirectMatch seeother ^/unrepertoire/.*$ http://www.example.com/une_url
