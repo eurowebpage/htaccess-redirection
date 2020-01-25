@@ -10,3 +10,15 @@ RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www.votre-site.eu$
 RewriteRule ^(.*) http://votre-site.eu/$1 [QSA,L,R=301]
 
+###############
+# version php
+###############
+<?php
+// version php
+if(strstr($_SERVER['HTTP_HOST'], 'www') == FALSE) {
+  header('Status: 301 Moved Permanently');
+  header('Location: http://.' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+  exit;
+}
+?>
+
